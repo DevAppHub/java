@@ -13,14 +13,14 @@ public class FP01Structured {
 		for (Integer num : numbers) {
 			System.out.println(num);
 		}
-		
-		//print only even number
+
+		// print only even number
 		for (Integer integer : numbers) {
-			if(integer%2==0) {
-				System.out.println("only even numbers"+integer);
+			if (integer % 2 == 0) {
+				System.out.println("only even numbers" + integer);
 			}
 		}
-		
+
 	}
 
 }
