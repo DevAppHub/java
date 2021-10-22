@@ -1,6 +1,5 @@
 package com.devapp.functionalprogramming;
 
-
 import java.util.List;
 
 public class FP02Structured {
