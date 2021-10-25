@@ -3,7 +3,7 @@ package com.devapp.functionalprogramming;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FP02Functional {
+public class FP02StreamFunctional {
 	public static void main(String[] args) {
 		List<Integer> numbers = List.of(12, 3, 5, 4, 7, 15, 12, 6);
 		int sum = addListFunctional(numbers);
