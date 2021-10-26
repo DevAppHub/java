@@ -196,6 +196,7 @@ public class FPCustomClass {
 				.mapToInt(Course::getNoOfStudents)
 				.average()
 				);//OptionalDouble[4928.571428571428]
+		
 		System.out.println(
 				courses.stream()
 				.filter(reviewScoreGreaterThan90)
@@ -209,5 +210,45 @@ public class FPCustomClass {
 				.mapToInt(Course::getNoOfStudents)
 				.max()
 				);//OptionalInt[22000]
+		
+		System.out.println(
+		courses.stream()
+			.collect(Collectors.groupingBy(Course::getCategory)));
+		
+		/*
+		 * {Cloud=[Course: AWS:Cloud:92:2000, Course: Azure:Cloud:90:21000, Course:
+		 * Docker:Cloud:93:2000, Course: Kubernates:Cloud:88:2000], FullStack=[Course:
+		 * FullStack:FullStack:91:22000], Microservices=[Course:
+		 * API:Microservices:97:2200, Course: Microservices:Microservices:96:1800],
+		 * Framework=[Course: Spring:Framework:98:2000, Course: Spring
+		 * Boot:Framework:95:2500]}
+		 */
+		
+		System.out.println(
+				courses.stream()
+					.collect(Collectors.groupingBy(Course::getCategory, Collectors.counting())));
+//		{Cloud=4, FullStack=1, Microservices=2, Framework=2}
+				
+		System.out.println(
+				courses.stream()
+					.collect(Collectors.groupingBy(Course::getCategory,
+							Collectors.maxBy(Comparator.comparing(Course::getReviewScore)))));
+		
+		/*
+		 * {Cloud=Optional[Course: Docker:Cloud:93:2000], FullStack=Optional[Course:
+		 * FullStack:FullStack:91:22000], Microservices=Optional[Course:
+		 * API:Microservices:97:2200], Framework=Optional[Course:
+		 * Spring:Framework:98:2000]}
+		 */
+		System.out.println(
+				courses.stream()
+					.collect(Collectors.groupingBy(Course::getCategory,
+							Collectors.mapping(Course::getName, Collectors.toList()))));
+		
+		/*
+		 * {Cloud=[AWS, Azure, Docker, Kubernates], FullStack=[FullStack],
+		 * Microservices=[API, Microservices], Framework=[Spring, Spring Boot]}
+		 */
+		
 	}
 }
